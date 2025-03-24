@@ -1,6 +1,7 @@
 import React from "react";
+import "./Home2.css";
 import { Container, Row, Col } from "react-bootstrap";
-import myImg from "../../Assets/avatar.svg";
+import myImg from "../../Assets/Myimage.jpg";
 import Tilt from "react-parallax-tilt";
 import {
   AiFillGithub,
@@ -47,16 +48,21 @@ function Home2() {
               <i>  
                 <b className="purple"> Django and Flask</b>  
               </i> for the backend.  
-              <i>
-              </i>
             </p>
           </Col>
+          
+          {/* Profile Image with Round Styling */}
           <Col md={4} className="myAvtar">
             <Tilt>
-              <img src={myImg} className="img-fluid" alt="avatar" />
+              <img
+                src={myImg}
+                className="img-fluid avatar-img"
+                alt="avatar"
+              />
             </Tilt>
           </Col>
         </Row>
+        
         <Row>
           <Col md={12} className="home-about-social">
             <h1>FIND ME ON</h1>
@@ -102,4 +108,5 @@ function Home2() {
     </Container>
   );
 }
+
 export default Home2;
