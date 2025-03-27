@@ -24,7 +24,7 @@ function NavBar() {
         {/* "Mk." text instead of logo */}
         <Navbar.Brand href="/" className="d-flex">
           <span style={{ color: "purple", fontSize: "58px", fontWeight: "bold", letterSpacing: "1px" }}>
-            Mk.
+            Mk.C
           </span>
         </Navbar.Brand>
 
@@ -44,13 +44,13 @@ function NavBar() {
 
             <Nav.Item>
               <Nav.Link as={Link} to="/about" onClick={() => updateExpanded(false)}>
-                <AiOutlineUser style={{ marginBottom: "2px" }} /> About
+                <AiOutlineUser style={{ marginBottom: "2px" }} /> About Me
               </Nav.Link>
             </Nav.Item>
 
             <Nav.Item>
               <Nav.Link as={Link} to="/project" onClick={() => updateExpanded(false)}>
-                <AiOutlineFundProjectionScreen style={{ marginBottom: "2px" }} /> Projects
+                <AiOutlineFundProjectionScreen style={{ marginBottom: "2px" }} /> My Projects
               </Nav.Link>
             </Nav.Item>
 

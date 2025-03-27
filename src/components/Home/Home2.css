@@ -1,7 +1,7 @@
 .avatar-img {
   border-radius: 50%; /* Makes the image circular */
-  width: 500px; /* Adjust size as needed */
-  height: 500px; /* Ensures a perfect circle */
+  width: 400px; /* Adjust size as needed */
+  height: 400px; /* Ensures a perfect circle */
   object-fit: cover; /* Prevents image distortion */
   border: 5px solid #6c63ff; /* Optional border */
 }

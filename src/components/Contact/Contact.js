@@ -15,33 +15,53 @@ function Contact() {
     message: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    window.location.href = `mailto:mayakannanc02@gmail.com?subject=Contact Form Submission&body=Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0APhone: ${formData.phone}%0D%0AProfession: ${formData.profession}%0D%0AMessage: ${formData.message}`;
+    setLoading(true);
+
+    try {
+      const response = await fetch("http://localhost:5000/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        alert("Message sent successfully!");
+        setFormData({ name: "", email: "", phone: "", profession: "", message: "" });
+      } else {
+        alert("Failed to send message. Try again later.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong.");
+    }
+
+    setLoading(false);
   };
 
   return (
     <div className="contact-section">
       <Card className="quote-card-view p-5">
         <Card.Body>
-          {/* Contact Me Heading */}
           <h2 className="contact-heading text-center mb-4">
-          <span className="purple"> Contact      </span>
-            <span style={{ color: "white" }}>Me</span>
+            <span className="purple">Contact</span>
+            <span style={{ color: "white" }}> Me</span>
           </h2>
 
           <Row className="align-items-center">
-            {/* Left Side: Contact Details */}
             <Col md={5} className="contact-card">
               <blockquote className="blockquote mb-0">
                 <p style={{ textAlign: "justify" }}>
                   Feel free to reach out for any inquiries! You can contact me via:
                 </p>
-
                 <p>
                   <AiOutlinePhone className="me-2" size={20} /> <strong>Phone:</strong>
                   <span className="purple"> +91 9344846636</span>
@@ -61,7 +81,6 @@ function Contact() {
               </blockquote>
             </Col>
 
-            {/* Right Side: Contact Form */}
             <Col md={7} className="contact-form-card">
               <Form onSubmit={handleSubmit} className="p-4 rounded">
                 <Form.Group className="mb-3">
@@ -84,8 +103,8 @@ function Contact() {
                   <Form.Control as="textarea" rows={3} placeholder="Your Message" name="message" value={formData.message} onChange={handleChange} required />
                 </Form.Group>
 
-                <Button variant="primary" type="submit" className="w-100 contact-btn">
-                  Send Message
+                <Button variant="primary" type="submit" className="w-100 contact-btn" disabled={loading}>
+                  {loading ? "Sending..." : "Send Message"}
                 </Button>
               </Form>
             </Col>
