@@ -1,0 +1,16 @@
+/* Example: Increase the z-index of your form */
+form {
+    position: relative; /* Required for z-index to work */
+    z-index: 100;
+}
+
+.resume-pdf-container{
+    max-width: 800px;
+    margin: 0 auto;
+}
+.resume-heading{
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 25px;
+}
+
